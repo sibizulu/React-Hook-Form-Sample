@@ -1,9 +1,8 @@
 import React from 'react'
-import { Controller, useFieldArray } from 'react-hook-form'
-import { Input } from 'baseui/input'
+import { Controller } from 'react-hook-form'
 import { Select } from 'baseui/select'
 import Options from '../options'
-export default ({ watch, control, namePrefix, index }) => {
+const SelectType = ({ watch, control, namePrefix, index }) => {
     const options = [
         {
             label: 'Long Answer',
@@ -20,8 +19,6 @@ export default ({ watch, control, namePrefix, index }) => {
     ]
 
     const watchData = watch(namePrefix)
-    console.log(watchData, watchData?.type[0]?.id)
-    console.log(watchData && watchData?.type[0]?.id === 'multiOption')
     return (
         <div>
             <Controller
@@ -60,3 +57,4 @@ export default ({ watch, control, namePrefix, index }) => {
         </div>
     )
 }
+export default SelectType

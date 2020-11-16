@@ -12,7 +12,7 @@ import SelectType from './selectType'
 import DeleteAlt from 'baseui/icon/delete-alt'
 
 export default function Forms() {
-    const { control, handleSubmit, watch, reset } = useForm({
+    const { control, handleSubmit, watch } = useForm({
         defaultValues: {
             exam: [
                 {
@@ -27,7 +27,6 @@ export default function Forms() {
         control,
         name: 'exam'
     })
-    const watchData = watch('fields', fields)
     const options = [
         {
             label: 'Multi Option',

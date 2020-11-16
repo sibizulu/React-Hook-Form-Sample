@@ -1,16 +1,14 @@
 import React from 'react'
 import { useForm, useFieldArray, Controller } from 'react-hook-form'
 import { Input } from 'baseui/input'
-import { Select } from 'baseui/select'
 import { Grid, Cell, BEHAVIOR } from 'baseui/layout-grid'
 import { Card } from 'baseui/card'
 import SelectType from './selectType'
 let renderCounter = 0
 
-export default () => {
-    const { control, handleSubmit, watch, register } = useForm()
-
-    const { fields, append, remove } = useFieldArray({
+const Form = () => {
+    const { control, handleSubmit, watch } = useForm()
+    const { fields, append } = useFieldArray({
         control,
         name: 'test'
     })
@@ -25,11 +23,18 @@ export default () => {
                         return (
                             <div key={field.id}>
                                 <Card>
-                                    <input
+                                    <Controller
+                                        render={({ onChange, ref }) => (
+                                            <Input
+                                                placeholder="Question"
+                                                onBlur={onChange}
+                                            />
+                                        )}
                                         name={`test[${index}].question`}
-                                        placeholder="Question"
-                                        ref={register}
+                                        control={control}
+                                        defaultValue={''}
                                     />
+
                                     <hr />
                                     <SelectType
                                         namePrefix={`test[${index}]`}
@@ -62,3 +67,4 @@ export default () => {
         </form>
     )
 }
+export default Form

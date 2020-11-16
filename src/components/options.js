@@ -11,7 +11,6 @@ export default function Options({ control, namePrefix, watch, index, style }) {
         control,
         name: namePrefix
     })
-    const data = watch('options', namePrefix)
 
     return (
         <div className="nested">
@@ -24,12 +23,8 @@ export default function Options({ control, namePrefix, watch, index, style }) {
                             defaultValue={''}
                             render={props => (
                                 <Input
-                                    inputRef={props.ref}
-                                    value={props.value}
                                     placeholder={`Option`}
-                                    onChange={e =>
-                                        props.onChange(e.target.value)
-                                    }
+                                    onChange={props.onChange}
                                 />
                             )}
                         />
