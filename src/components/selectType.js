@@ -1,6 +1,6 @@
 import React from 'react'
 import Options from './options'
-const SelectType = ({ control, index, watch }) => {
+const SelectType = ({ control, index, watch, changed }) => {
     const output = watch('exam')
 
     return (
@@ -9,6 +9,7 @@ const SelectType = ({ control, index, watch }) => {
                 <Options
                     control={control}
                     namePrefix={`exam[${index}].options`}
+                    watch={watch}
                 />
             )}
         </>

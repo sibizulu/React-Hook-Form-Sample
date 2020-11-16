@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useStyletron } from 'baseui'
 import { Grid, Cell, BEHAVIOR } from 'baseui/layout-grid'
-import Forms from './components/forms'
+import Form from './components/form'
 
 export default function App() {
     return (
@@ -9,7 +9,7 @@ export default function App() {
             <Grid behavior={BEHAVIOR.fluid}>
                 <Cell span={9}>
                     <Content>
-                        <Forms />
+                        <Form />
                     </Content>
                 </Cell>
             </Grid>

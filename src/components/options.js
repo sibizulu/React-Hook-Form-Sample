@@ -6,11 +6,12 @@ import { Input } from 'baseui/input'
 
 import DeleteAlt from 'baseui/icon/delete-alt'
 
-export default function Options({ control, namePrefix }) {
+export default function Options({ control, namePrefix, watch, index, style }) {
     const { fields, append, remove } = useFieldArray({
         control,
         name: namePrefix
     })
+    const data = watch('options', namePrefix)
 
     return (
         <div className="nested">
@@ -20,7 +21,7 @@ export default function Options({ control, namePrefix }) {
                         <Controller
                             name={`${namePrefix}[${index}].name`}
                             control={control}
-                            defaultValue={`${item.name}`}
+                            defaultValue={''}
                             render={props => (
                                 <Input
                                     inputRef={props.ref}

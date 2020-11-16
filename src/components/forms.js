@@ -12,13 +12,22 @@ import SelectType from './selectType'
 import DeleteAlt from 'baseui/icon/delete-alt'
 
 export default function Forms() {
-    const { control, handleSubmit, watch } = useForm({
-        // defaultValues: {}; you can populate the fields by this attribute
+    const { control, handleSubmit, watch, reset } = useForm({
+        defaultValues: {
+            exam: [
+                {
+                    question: 'What is your choice?',
+                    type: 'multiOption',
+                    options: [{ name: 'here' }]
+                }
+            ]
+        }
     })
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'exam'
     })
+    const watchData = watch('fields', fields)
     const options = [
         {
             label: 'Multi Option',
