@@ -1,7 +1,7 @@
 import React from 'react'
-import { Controller } from 'react-hook-form'
+import { Controller, useWatch } from 'react-hook-form'
 import { Select } from 'baseui/select'
-import Options from '../options'
+import Options from './options'
 const SelectType = ({ watch, control, namePrefix, index }) => {
     const options = [
         {
@@ -18,7 +18,12 @@ const SelectType = ({ watch, control, namePrefix, index }) => {
         }
     ]
 
-    const watchData = watch(namePrefix)
+    //const watchData = watch(namePrefix)
+    const watchData = useWatch({
+        control,
+        name: `${namePrefix}.type`
+    })
+
     return (
         <div>
             <Controller
@@ -46,7 +51,7 @@ const SelectType = ({ watch, control, namePrefix, index }) => {
                 control={control}
                 defaultValue={''}
             />
-            {watchData && watchData?.type[0]?.id === 'multiOption' && (
+            {watchData && watchData[0]?.id === 'multiOption' && (
                 <Options
                     control={control}
                     namePrefix={`test[${index}].options`}
