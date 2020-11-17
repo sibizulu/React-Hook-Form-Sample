@@ -3,6 +3,7 @@ import { useForm, useFieldArray, Controller } from 'react-hook-form'
 import { Input } from 'baseui/input'
 import { Grid, Cell, BEHAVIOR } from 'baseui/layout-grid'
 import { Card } from 'baseui/card'
+import { Button, KIND } from 'baseui/button'
 import SelectType from './selectType'
 let renderCounter = 0
 
@@ -49,17 +50,17 @@ const Form = () => {
                     })}
                 </Cell>
                 <Cell span={8}>
-                    <input type="submit" />
-                    <input
-                        type="button"
+                    <Button type="submit">Submit</Button>
+                    <Button
                         onClick={() =>
                             append({
                                 type: '',
                                 question: ''
                             })
                         }
-                        value={'Add more'}
-                    />
+                        kind={KIND.secondary}>
+                        Add more
+                    </Button>
 
                     <p>{'RENDER COUNT: ' + renderCounter}</p>
                 </Cell>
