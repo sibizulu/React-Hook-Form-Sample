@@ -10,13 +10,11 @@ import { LightTheme, BaseProvider } from 'baseui'
 const engine = new Styletron()
 
 ReactDOM.render(
-    <React.StrictMode>
-        <StyletronProvider value={engine}>
-            <BaseProvider theme={LightTheme}>
-                <App />
-            </BaseProvider>
-        </StyletronProvider>
-    </React.StrictMode>,
+    <StyletronProvider value={engine}>
+        <BaseProvider theme={LightTheme}>
+            <App />
+        </BaseProvider>
+    </StyletronProvider>,
     document.getElementById('root')
 )
 

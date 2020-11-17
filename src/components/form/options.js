@@ -6,7 +6,7 @@ import { Input } from 'baseui/input'
 
 import DeleteAlt from 'baseui/icon/delete-alt'
 
-export default function Options({ control, namePrefix, watch, index, style }) {
+export default function Options({ control, namePrefix }) {
     const { fields, append, remove } = useFieldArray({
         control,
         name: namePrefix

@@ -2,23 +2,22 @@ import React from 'react'
 import { Controller, useWatch } from 'react-hook-form'
 import { Select } from 'baseui/select'
 import Options from './options'
-const SelectType = ({ watch, control, namePrefix, index }) => {
-    const options = [
-        {
-            label: 'Long Answer',
-            id: 'long'
-        },
-        {
-            label: 'Multi Option',
-            id: 'multiOption'
-        },
-        {
-            label: 'Short Answer',
-            id: 'short'
-        }
-    ]
+const options = [
+    {
+        label: 'Long Answer',
+        id: 'long'
+    },
+    {
+        label: 'Multi Option',
+        id: 'multiOption'
+    },
+    {
+        label: 'Short Answer',
+        id: 'short'
+    }
+]
 
-    //const watchData = watch(namePrefix)
+const SelectType = ({ control, namePrefix }) => {
     const watchData = useWatch({
         control,
         name: `${namePrefix}.type`
@@ -36,12 +35,6 @@ const SelectType = ({ watch, control, namePrefix, index }) => {
                         deleteRemoves={false}
                         escapeClearsValue={false}
                         searchable={false}
-                        defaultValue={[
-                            {
-                                label: 'Long Answer',
-                                id: 'long'
-                            }
-                        ]}
                         onChange={params => {
                             props.onChange(params.value)
                         }}
@@ -49,14 +42,17 @@ const SelectType = ({ watch, control, namePrefix, index }) => {
                 )}
                 name={`${namePrefix}.type`}
                 control={control}
-                defaultValue={''}
+                defaultValue={[
+                    {
+                        label: 'Long Answer',
+                        id: 'long'
+                    }
+                ]}
             />
             {watchData && watchData[0]?.id === 'multiOption' && (
                 <Options
                     control={control}
-                    namePrefix={`test[${index}].options`}
-                    watch={watch}
-                    index={index}
+                    namePrefix={`${namePrefix}.options`}
                 />
             )}
         </div>

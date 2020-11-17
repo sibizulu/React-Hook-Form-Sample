@@ -8,7 +8,7 @@ import SelectType from './selectType'
 let renderCounter = 0
 
 const Form = () => {
-    const { control, handleSubmit, watch } = useForm()
+    const { control, handleSubmit } = useForm()
     const { fields, append } = useFieldArray({
         control,
         name: 'test'
@@ -41,7 +41,6 @@ const Form = () => {
                                         namePrefix={`test[${index}]`}
                                         index={index}
                                         control={control}
-                                        watch={watch}
                                     />
                                     <hr />
                                 </Card>
